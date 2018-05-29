@@ -1,19 +1,6 @@
-class Pokemon {
-  constructor(name, level) {
-    this.name = name;
-    this.level = level;
-  }
+const Pokemon = require('./Pokemon.js');
 
-  show() {
-    console.log(`Hi! My name is ${this.name}, my level is ${this.level}`);
-  }
-
-  valueOf() {
-    return this.level;
-  }
-}
-
-class Pokemonlist extends Array{
+class Pokemonlist extends Array {
   constructor(...items) {
     items = items.filter(
       item => item instanceof Pokemon
@@ -22,7 +9,7 @@ class Pokemonlist extends Array{
   }
 
   add(name,level) {
-    let newPokemon = new Pokemon(name,level);
+    const newPokemon = new Pokemon(name,level);
     this.push(newPokemon);
   }
 
@@ -35,9 +22,11 @@ class Pokemonlist extends Array{
 
   max() {
     let strongestPokemon = Math.max(...this);
-    
+
     return this.find(
       item => item.level == strongestPokemon
     );
   }
 }
+
+module.exports = Pokemonlist;
